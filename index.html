@@ -8,10 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: #f0fdfa; /* 極淡的湖水綠背景 */
         }
+
         .section-card {
             background: white;
             border-radius: 1.25rem;
@@ -19,17 +32,40 @@
             padding: 2rem;
             margin-bottom: 2rem;
             border: 1px solid #ccfbf1;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease backwards;
         }
+
+        /* 滑鼠懸停時卡片稍微浮起 */
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 讓各個區塊延遲顯示，形成交錯動畫感 */
+        .card-delay-1 { animation-delay: 0.1s; }
+        .card-delay-2 { animation-delay: 0.2s; }
+        .card-delay-3 { animation-delay: 0.3s; }
+        .card-delay-4 { animation-delay: 0.4s; }
+
         .item-box {
             padding: 1rem;
             height: 100%;
         }
+
         .header-gradient {
             background: linear-gradient(135deg, #0d9488 0%, #06b6d4 100%);
         }
+
         b, strong {
             color: #0f172a; /* 深色粗體增加對比度 */
             font-weight: 700;
+        }
+
+        /* 圖示小動畫：懸停時微動 */
+        h2:hover i {
+            transform: scale(1.2) rotate(5deg);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
@@ -45,7 +81,7 @@
     <main class="max-w-5xl mx-auto px-4">
 
         <!-- 一、技巧 -->
-        <section class="section-card">
+        <section class="section-card card-delay-1">
             <h2 class="text-2xl font-bold text-teal-700 mb-6 border-b-2 border-teal-100 pb-3 flex items-center">
                 <i class="fas fa-magic mr-3"></i> 一、技巧
             </h2>
@@ -76,7 +112,7 @@
         </section>
 
         <!-- 二、題目 -->
-        <section class="section-card">
+        <section class="section-card card-delay-2">
             <h2 class="text-2xl font-bold text-teal-700 mb-6 border-b-2 border-teal-100 pb-3 flex items-center">
                 <i class="fas fa-clipboard-list mr-3"></i> 二、題目
             </h2>
@@ -108,7 +144,7 @@
         </section>
 
         <!-- 三、我的心得 -->
-        <section class="section-card bg-orange-50/50">
+        <section class="section-card bg-orange-50/50 card-delay-3 border-orange-100">
             <h2 class="text-2xl font-bold text-orange-700 mb-6 border-b-2 border-orange-100 pb-3 flex items-center">
                 <i class="fas fa-user-edit mr-3"></i> 三、我的心得
             </h2>
@@ -138,7 +174,7 @@
         </section>
 
         <!-- 四、其他 -->
-        <section class="section-card border-l-8 border-l-teal-500">
+        <section class="section-card border-l-8 border-l-teal-500 card-delay-4">
             <h2 class="text-2xl font-bold text-teal-800 mb-6 border-b border-teal-50 pb-3 flex items-center">
                 <i class="fas fa-lightbulb text-yellow-500 mr-3"></i> 四、其他
             </h2>
